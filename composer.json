@@ -1,0 +1,44 @@
+{
+    "name": "csun/facmgmt",
+    "description": "PHP Authentication system middleware powered by LDAP",
+    "keywords": ["PHP","AUthentication", "LDAP"],
+    "homepage": "https://github.com/Arconiaprime/php-auth-manager",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Daniel Weiner",
+            "email": "info@phantomnet.net",
+            "homepage": "https://phantomnet.net",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Peter Szymanski",
+            "role": "Developer",
+            "email": "peter.szymanski.217@my.csun.edu"
+        },
+        {
+            "name": "Dean Harkum",
+            "role": "Developer",
+            "email": "dean.harkum.1@my.csun.edu"
+        },
+    ],
+    "require": {
+        "php": ">=5.3",
+        "laravel/framework": "4.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "app/commands",
+            "app/controllers",
+            "app/models",
+            "app/database/migrations",
+            "app/database/seeds"
+        ]
+    },
+    "scripts": {
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "stable"
+}
