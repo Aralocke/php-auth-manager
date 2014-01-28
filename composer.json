@@ -3,7 +3,7 @@
     "description": "PHP Authentication system middleware powered by LDAP",
     "keywords": ["PHP","AUthentication", "LDAP"],
     "homepage": "https://github.com/Arconiaprime/php-auth-manager",
-    "license": "GPLv2",
+    "license": "GPL-2.0",
     "authors": [
         {
             "name": "Daniel Weiner",
@@ -20,7 +20,7 @@
             "name": "Dean Harkum",
             "role": "Developer",
             "email": "dean.harkum.1@my.csun.edu"
-        },
+        }
     ],
     "require": {
         "php": ">=5.3",
