@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', 'HomeController@showWelcome');
+
+# OAuth 2 Routing
+# Authorization
+Route::post('/api/oauth/2/authorize', function()
 {
-	return View::make('hello');
+    return AuthorizationServer::performAccessTokenFlow();
 });

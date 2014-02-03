@@ -25,7 +25,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/facmgmt',
+	'url' => 'http://localhost:8888/php-auth-manager',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -113,6 +113,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+		# OAuth2 server
+		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
+
 	),
 
 	/*
@@ -177,6 +180,10 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		
+		# OAuth Server resources
+		'AuthorizationServer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizationServerFacade',
+		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',
 
 	),
 

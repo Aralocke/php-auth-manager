@@ -24,7 +24,8 @@
     ],
     "require": {
         "php": ">=5.3",
-        "laravel/framework": "4.0.*"
+        "laravel/framework": "4.0.*",
+        "lucadegasperi/oauth2-server-laravel": "1.0.x"
     },
     "autoload": {
         "classmap": [
