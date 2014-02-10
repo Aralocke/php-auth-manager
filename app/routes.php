@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/Applications', 'ApplicationController@index');
+
 # OAuth 2 Routing
 # Authorization
 Route::post('/api/oauth/2/authorize', function()

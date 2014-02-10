@@ -1,0 +1,120 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+html {
+	height: 100%;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+body {
+	height: 100%;
+}
+/* Global wrapper 
+ * this will center all of the blocks and keep them 
+ * locked to the designated width
+ */
+.wrapper {
+	width: 960px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 960px;
+}
+
+/* Primary container */
+div#container {
+    width:100%;
+    height:auto;
+    min-height: 100%;
+}
+
+/* Hack for the sticky footer */
+div#container div.wrapper {
+	overflow: auto;
+	/* must be same height as the footer */
+	padding-bottom: 150px; 
+}
+
+div#navigation {
+	float: left;
+	width: 100%;
+	height: auto;
+	border-bottom: 1px solid #000; 
+}
+
+/* Navigation */
+div#navigation-left { float:left; }
+div#navigation-right { float:right; }
+
+div#content {
+	float: left;
+	width: 100%;
+	/*height: 100%;*/
+	margin: 12px 0 12px 0;
+}
+
+/* Content blocks */
+div#content-left {
+    float: left;
+    width: 200px;
+    height: auto;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+div#content-right {
+	float: right;
+	width: 650px;
+	height: auto;
+	border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+/* Menus */
+ul.menu { list-style-type: none; }
+
+ul.menu li { 
+	float: left;
+	margin: 0 8px 0 0; 
+}
+
+li.vertical-menu-item { width: 100%; }
+
+/* Main menu */
+ul#main-menu {
+    
+}
+
+/* Primary footer block */
+div#footer {
+	position: relative;
+	margin-top: -150px;
+    float: left;
+    width: 100%;
+    height: 150px;
+    clear: both;
+}
+
+div.footer-column {
+	float: left;
+	width: 320px;
+	height: auto;
+	min-height: 12px;
+	border: 1px solid #000;
+}
+
+div#footer-right ul#nav-menu { float:right; }
+
+/* Cleanup */
+.clear { clear: both;}
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}

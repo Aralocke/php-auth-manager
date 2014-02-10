@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'mysql-dev-mamp',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -46,11 +46,12 @@ return array(
 
 	'connections' => array(
 
-		'mysql' => array(
+		'mysql-dev-mamp' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'php_auth',
-			'username'  => 'root',
+			'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
+			'username'  => 'php_auth',
 			'password'  => 'UDjNjFV1geFO2IsP',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_bin',

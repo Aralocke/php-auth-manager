@@ -7,6 +7,7 @@ CREATE TABLE `applications` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+
 CREATE TABLE `applications_metadata` (
   `id` varchar(32) COLLATE utf8_bin NOT NULL,
   `app_id` varchar(32) COLLATE utf8_bin NOT NULL,

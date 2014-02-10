@@ -3,6 +3,11 @@
 class BaseController extends Controller {
 
 	/**
+     * The layout that should be used for responses.
+     */
+    #protected $layout = 'pages.home';
+
+	/**
 	 * Setup the layout used by the controller.
 	 *
 	 * @return void
@@ -14,5 +19,4 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
-
 }
