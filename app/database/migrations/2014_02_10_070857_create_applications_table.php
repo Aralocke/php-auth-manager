@@ -15,6 +15,7 @@ class CreateApplicationsTable extends Migration {
 		Schema::create('applications', function(Blueprint $table) {
 			# Engine=InnoDB
 			$table->engine = 'InnoDB';
+			
 			# VARCHAR(32)
 			$table->string('id', 32);
 			$table->string('name', 64);
