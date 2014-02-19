@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
 @section('sidebar-nav-menu')
-    <li class="menuitem vertical-menu-item">
-    	<a href="#">Applications</a>
-    </li><!-- li.menuitem -->
-	<li class="menuitem vertical-menu-item">
-		<a href="#">LDAP Targets</a>
-	</li><!-- li.menuitem -->
-	<li class="menuitem vertical-menu-item">
-		<a href="#">Users</a>
-	</li><!-- li.menuitem -->
+    @parent
+    <ul class="nav nav-sidebar">
+	    <li><a href="">Nav item</a></li>
+	    <li><a href="">Nav item again</a></li>
+	    <li><a href="">One more nav</a></li>
+	    <li><a href="">Another nav item</a></li>
+	    <li><a href="">More navigation</a></li>
+	  </ul>
 @stop

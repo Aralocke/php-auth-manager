@@ -1,7 +1,22 @@
-<ul id="main-menu" class="menu">
-	<li class="menuitem"><a href="<?php echo action('HomeController@index'); ?>">Home</a></li><!-- li.menuitem -->
-	<li class="menuitem"><a href="<?php echo action('ApplicationController@index'); ?>">Applications</a></li><!-- li.menuitem -->
-	<li class="menuitem"><a href="#">LDAP</a></li><!-- li.menuitem -->
-	<li class="menuitem"><a href="#">Users</a></li><!-- li.menuitem -->
-	<li class="menuitem"><a href="#">Logout</a></li><!-- li.menuitem -->
-</ul><!-- ul#main-menu -->
+<div class="container-fluid">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">@yield('project', 'Project name')</a>
+	</div>
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="{{ URL::to('/') }}">Dashboard</a></li>
+			<li><a href="{{ URL::to('/app/settings') }}">Settings</a></li>
+			<li><a href="{{ URL::to('/user/profile') }}">Profile</a></li>
+			<li><a href="{{ URL::to('/auth/logout') }}">Logout</a></li>
+		</ul>
+		<form id="search-form" class="navbar-form navbar-right">
+			<input type="text" class="form-control" placeholder="Search...">
+		</form><!-- form#search-form -->
+	</div><!-- div.navbar-collapse -->
+</div><!-- div.container-fluid -->
