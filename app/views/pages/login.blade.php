@@ -2,15 +2,35 @@
 
 @section('body')
 <div class="container">
-	<form action="{{ URL::to('/auth/login') }}" method="POST" class="form-signin" role="form">
-		{{ Form::token() }}
+	@if (Session::has('error'))
+    <div id="flash-error">
+    	<p>{{{ Session::get('error') }}}</p>
+    </div><!-- div#flash-error -->
+	@endif
+	@if (Session::has('notice'))
+    <div id="flash-notice">
+    	<p>{{{ Session::get('notice') }}}</p>
+    </div><!-- div#flash-error -->
+	@endif
+	{{ Form::open(array('action' => 'AuthController@store', 'class' => 'form-signin', 'role' => 'form')) }}
 		<h2 class="form-signin-heading">Please sign in</h2>
-		<input type="email" class="form-control" placeholder="Email address" required autofocus>
-		<input type="password" class="form-control" placeholder="Password" required>
+		{{ Form::label('email', 'Username') }}
+		{{ Form::text('email', $value = Input::old('email'), array(
+			'placeholder' => 'Username',
+			'class'       => 'form-control'
+		)) }}
+		{{ $errors->first('email', '<div class="form-error"><p>:message</p></div>') }}
+		{{ Form::label('password', 'Password') }}
+		{{ Form::password('password', array(
+			'placeholder' => 'Password',
+			'class'       => 'form-control'
+		)) }}
+		{{ $errors->first('password', '<div class="form-error"><p>:message</p></div>') }}
 		<label class="checkbox">
-			<input type="checkbox" value="remember-me"> Remember me
+			{{ Form::checkbox('remember-me', 'remember-me', 
+				Input::get('remember-me', false) ? true : false) }} Remember me
 		</label>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	</form>
+	{{ Form::close() }}
 </div> <!-- /container -->
 @stop

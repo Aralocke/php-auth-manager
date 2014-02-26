@@ -1,7 +1,7 @@
 {
     "name": "csun/facmgmt",
     "description": "PHP Authentication system middleware powered by LDAP",
-    "keywords": ["PHP","AUthentication", "LDAP"],
+    "keywords": ["PHP","Authentication", "LDAP"],
     "homepage": "https://github.com/Arconiaprime/php-auth-manager",
     "license": "GPL-2.0",
     "authors": [
@@ -25,6 +25,7 @@
     "require": {
         "php": ">=5.3",
         "laravel/framework": "4.0.*",
+        "cartalyst/sentry": "2.0.*",
         "lucadegasperi/oauth2-server-laravel": "1.0.x"
     },
     "autoload": {

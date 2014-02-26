@@ -33,9 +33,54 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+Route::filter('auth', function() {
+	if (!Sentry::check()) 
+	{
+		return Redirect::route('login');
+	}
+});
+
+Route::filter('inGroup', function($route, $request, $value)
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if (!Sentry::check()) 
+	{
+		return Redirect::route('login');
+	}
+
+	try
+	{
+		/* We get the session's current user */
+		$user = Sentry::getUser();
+
+		/* Get the group we're checking for */
+		$group = Sentry::findGroupByName($value);
+
+		/* User id of the session user, does not equal 
+		 * what we have saved */
+		if ($user->id != Session::get('uid'))
+		{
+			/* Rebuild the session by redirecting the user
+			 * to the logout logic */
+			return Redirect::route('logout');
+		}
+
+		if (!$user->inGroup($group))
+		{
+			Session::flash('error', trans('users.noaccess'));
+			return Redirect::route('home');
+		}
+	}
+	catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+	{
+		Session::flash('error', trans('users.notfound'));
+		return Redirect::route('login');
+	}
+
+	catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+	{
+		Session::flash('error', trans('groups.notfound'));
+		return Redirect::route('login');
+	}
 });
 
 

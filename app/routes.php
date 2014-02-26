@@ -1,27 +1,32 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+// Home route
+Route::get('/', array(
+	'as'   => 'home',
+	'uses' => 'HomeController@index'
+));
 
-Route::get('/', 'HomeController@index');
+// Session Routes
+Route::get('/auth/login',  array(
+	'as'   => 'login', /* Named route */
+	'uses' => 'AuthController@create'
+));
+Route::get('/auth/logout', array(
+	'as'   => 'logout', /* Named route */ 
+	'uses' => 'AuthController@destroy'
+));
+Route::resource('sessions', 'AuthController', array(
+	/* CRUD methods for the session controller */
+	'only' => array(
+		'create', 'store', 'destroy'
+	)
+));
 
-Route::get('/Applications', 'ApplicationController@index');
+// Application control
+Route::get('/applications', array(
+	'as'   => 'applications', /* Named route */
+	'uses' => 'ApplicationController@index'
+));
 
-/* User login / logout */
-Route::get('/auth/login', 'AuthController@index');
-Route::get('/auth/logout', 'AuthController@logout');
-
-# OAuth 2 Routing
-# Authorization
-Route::post('/api/oauth/2/authorize', function()
-{
-    return AuthorizationServer::performAccessTokenFlow();
-});
+/* OAuth Integrations */
+// Route::post('');

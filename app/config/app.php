@@ -116,6 +116,8 @@ return array(
 		# OAuth2 server
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 
+		# Sentry Authentication System
+		'Cartalyst\Sentry\SentryServiceProvider',
 	),
 
 	/*
@@ -185,6 +187,8 @@ return array(
 		'AuthorizationServer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizationServerFacade',
 		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',
 
+        # Sentry Authentication System
+		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	),
 
 );

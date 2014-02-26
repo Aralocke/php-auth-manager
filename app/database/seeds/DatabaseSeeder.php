@@ -12,6 +12,11 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		// $this->call('UserTableSeeder');
+
+		// Sentry Authentication Systems
+		$this->call('SentryGroupSeeder');
+		$this->call('SentryUserSeeder');
+		$this->call('SentryUserGroupSeeder');
 	}
 
 }
