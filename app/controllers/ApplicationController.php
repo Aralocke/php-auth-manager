@@ -2,7 +2,13 @@
 
 class ApplicationController extends BaseController {
 
-    #protected $layout = ;
+    public function create()
+    {
+    	return View::make('pages.application.create')
+	    	->with(array(
+	    		'title' => 'Application Page'
+	    	));
+    }
 
 	public function index()
 	{

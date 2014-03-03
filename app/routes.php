@@ -15,7 +15,7 @@ Route::get('/auth/logout', array(
 	'as'   => 'logout', /* Named route */ 
 	'uses' => 'AuthController@destroy'
 ));
-Route::resource('sessions', 'AuthController', array(
+Route::resource('auth', 'AuthController', array(
 	/* CRUD methods for the session controller */
 	'only' => array(
 		'create', 'store', 'destroy'
@@ -23,10 +23,20 @@ Route::resource('sessions', 'AuthController', array(
 ));
 
 // Application control
-Route::get('/applications', array(
+Route::get('applications/overview', array(
 	'as'   => 'applications', /* Named route */
 	'uses' => 'ApplicationController@index'
 ));
-
+Route::get('applications/create', 'ApplicationController@create');
+Route::get('applications', function()
+{
+	return Redirect::to('applications/overview');
+});
+Route::resource('applications', 'ApplicationController', array(
+	/* CRUD methods for the session controller */
+	'only' => array(
+		'create', 'store', 'destroy'
+	)
+));
 /* OAuth Integrations */
 // Route::post('');

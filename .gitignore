@@ -1,8 +1,10 @@
-.DS_Store
-.metadata
-
-app/storage
-storage
-
+app/storage/logs/*.txt
+app/storage/views
+/bootstrap/compiled.php
 vendor
+composer.phar
 composer.lock
+.env.local.php
+.env.php
+.DS_Store
+Thumbs.db

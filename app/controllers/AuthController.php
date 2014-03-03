@@ -59,20 +59,11 @@ class AuthController extends BaseController
 		/* Sentry throws exceptions when it encounters an error */
 		try 
 		{
-			/* Authenticate the user's credentials */
-			$user = Sentry::authenticate($credentials, false);
-
 			/* If we successfully authenticated, we need to login */
-			if (Input::has('remember-me'))
-			{
-				/* Login with a persistant cookie */
-				Sentry::loginAndRemember($user);
-			}
-			else
-			{
-				/* Login the user without a persistant cookie */
-				Sentry::login($user, false);
-			}
+			$remember = (bool)Input::has('remember-me');
+
+			/* Authenticate the user's credentials */
+			$user = Sentry::authenticate($credentials, $remember);
 
 			/* Save the user's user id into the session. We use this
 			 * to validate that the user is who the session belongs
