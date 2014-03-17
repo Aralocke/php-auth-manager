@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table) {
+		/*Schema::create('users', function(Blueprint $table) {
 			# Engine=InnoDB
 			$table->engine = 'InnoDB';
 			
@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration {
 				->references('id')->on('ldap_targets')
 				->onUpdate('cascade')
 				->onDelete('restrict');
-		});
+		});*/
 	}
 
 	/**

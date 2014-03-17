@@ -7,7 +7,7 @@ class CreateLdapTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('ldap_targets', function(Blueprint $table) {
+		/*Schema::create('ldap_targets', function(Blueprint $table) {
 			# Engine=InnoDB
 			$table->engine = 'InnoDB';
 			
@@ -29,7 +29,7 @@ class CreateLdapTable extends Migration {
 				->references('id')->on('applications')
 				->onUpdate('cascade')
 				->onDelete('restrict');
-		});
+		});*/
 	}
 
 	public function down()

@@ -7,7 +7,7 @@ class CreateLdapMetaTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('ldap_targets_metadata', function(Blueprint $table) {
+		/*Schema::create('ldap_targets_metadata', function(Blueprint $table) {
 			# Engine=InnoDB
 			$table->engine = 'InnoDB';
 			
@@ -16,7 +16,7 @@ class CreateLdapMetaTable extends Migration {
 
 			$table->string('field_username');
 			$table->string('field_email');
-            $table->string('field_')
+            #$table->string('field_');
 
 			$table->primary('id');
 			$table->index('app_id');
@@ -30,7 +30,7 @@ class CreateLdapMetaTable extends Migration {
 				->references('id')->on('applications')
 				->onUpdate('cascade')
 				->onDelete('restrict');
-		});
+		});*/
 	}
 
 	public function down()

@@ -1,16 +1,11 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-
-class Application extends Eloquent implements UserInterface, RemindableInterface 
+class Application extends Eloquent 
 {
     /**
      * Table name
      */
     protected $table = 'applications';
 
-    public function getApplicationID() {
-    	return $this->id;
-    }
+    public $timestamps = true;
 }

@@ -12,7 +12,7 @@ class CreateApplicationsMetaTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('applications_metadata', function(Blueprint $table) {
+		/*Schema::create('applications_metadata', function(Blueprint $table) {
 			# Engine=InnoDB
 			$table->engine = 'InnoDB';
 
@@ -29,7 +29,7 @@ class CreateApplicationsMetaTable extends Migration {
 				->references('id')->on('applications')
 				->onUpdate('cascade')
 				->onDelete('restrict');
-		});
+		});*/
 	}
 
 	/**
