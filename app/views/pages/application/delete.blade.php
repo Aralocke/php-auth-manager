@@ -10,19 +10,13 @@
 @section('sidebar-subnav-menu')
 <ul id="sub-nav" class="nav nav-sidebar">
 	<li><a href="{{ URL::to('applications/'.$application->id.'/update') }}">Update</a></li>
-	<li><a href="{{ URL::to('applications/'.$application->id.'/delete') }}">Delete</a></li>
 </ul><!-- ul#subnav -->
-@overwrite
+@stop
 
 @section('content-body')
+{{ Form::open(array('route' => array('applications.delete', $application->id), 'method' => 'DELETE')) }}
 
-	<h1>Application Name</h1>
-		<p>{{ $application->name }}</p> 
+	{{ Form::submit('Confirm Delete', array('class' => 'btn btn-lg btn-primary btn-block')) }}
 
-	<h1>Application URL</h1>
-		<p>{{ $application->application_url }}</p>
-
-	<h1>Callback URL</h1>
-			<p>{{ $application->callback_url }}</p>
-
+{{ Form::close() }}
 @overwrite

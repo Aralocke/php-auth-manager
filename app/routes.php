@@ -33,7 +33,15 @@ Route::get('applications/{id}/view', array(
 ));
 
 Route::get('applications/{id}/delete', 'ApplicationController@deleteForm');
+Route::delete('applications/{id}/delete', array(
+	'as' => 'applications.delete',
+	'uses' => 'ApplicationController@delete'
+));
 Route::get('applications/{id}/update', 'ApplicationController@updateForm');
+Route::put('applications/{id}/update', array(
+	'as' => 'applications.update',
+	'uses' => 'ApplicationController@update'
+));
 
 Route::resource('applications', 'ApplicationController', array(
 	/* CRUD methods for the session controller */
