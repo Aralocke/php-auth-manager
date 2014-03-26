@@ -7,30 +7,23 @@ class CreateLdapMetaTable extends Migration {
 
 	public function up()
 	{
-		/*Schema::create('ldap_targets_metadata', function(Blueprint $table) {
-			# Engine=InnoDB
+		Schema::create('ldap_targets_metadata', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			
-			$table->string('id', 32);
-			$table->string('app_id', 32);
-
-			$table->string('field_username');
-			$table->string('field_email');
-            #$table->string('field_');
-
-			$table->primary('id');
-			$table->index('app_id');
-
-			$table->foreign('id')
+			$table->increments('id');
+			
+			$table->integer('ldap_id')
+				->unsigned()
+				->index();
+			$table->foreign('ldap_id')
 				->references('id')->on('ldap_targets')
-				->onUpdate('cascade')
-				->onDelete('restrict');
+				->onUpdate('cascade');
 
-			$table->foreign('app_id')
-				->references('id')->on('applications')
-				->onUpdate('cascade')
-				->onDelete('restrict');
-		});*/
+			$table->string('field', 32);
+
+			$table->timestamps();
+			$table->softDeletes();
+		});
 	}
 
 	public function down()
