@@ -7,29 +7,27 @@ class CreateLdapTable extends Migration {
 
 	public function up()
 	{
-		/*Schema::create('ldap_targets', function(Blueprint $table) {
-			# Engine=InnoDB
+		Schema::create('ldap_targets', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			
-			$table->string('id', 32);
-			$table->string('app_id', 32);
-			$table->boolean('secure')->default('0');
+			$table->increments('id');
+
+			$table->string('app_id', 32)
+				->index();
+			$table->foreign('app_id')
+				->references('id')->on('applications')
+				->onUpdate('cascade');
+
 			$table->string('hostname', 32);
 			$table->smallInteger('port');
+			$table->boolean('secure')
+				->default('0');
 
 			# Timestamp controlling
 			$table->timestamps();
 			# Adds a deleted_at
 			$table->softDeletes(); 
-
-			$table->primary('id');
-			$table->index('app_id');
-
-			$table->foreign('app_id')
-				->references('id')->on('applications')
-				->onUpdate('cascade')
-				->onDelete('restrict');
-		});*/
+		});
 	}
 
 	public function down()

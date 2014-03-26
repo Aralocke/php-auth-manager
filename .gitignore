@@ -1,5 +1,6 @@
 app/storage/logs/*.txt
 app/storage/views
+app/storage/sessions/sess_*
 /bootstrap/compiled.php
 vendor
 composer.phar
