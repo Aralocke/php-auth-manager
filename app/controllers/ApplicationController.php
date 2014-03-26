@@ -41,7 +41,31 @@ class ApplicationController extends BaseController
 
 	public function update($id)
 	{
+		// validate
+		$rules = array(
+			'name'            => 'required',
+			'application_url' => 'required',
+			'callback_url'    => 'required'
+		);
 
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::route('applications.update')
+				->withErrors($validator)
+				->withInput(); 
+		}
+
+		$application = Application::find($id);
+		$application->name            = Input::get('name');
+		$application->application_url = Input::get('application_url');
+		$application->callback_url    = Input::get('callback_url');
+		$application->save();
+
+		// redirect
+		return Redirect::route('applications.view', $application->id)
+			->with('success', 'Successfully updated application!');
 	}
 
 	public function store()
@@ -106,11 +130,28 @@ class ApplicationController extends BaseController
 
     public function updateForm($id)
     {
-    	return 'Display the update form';
+    	$application = Application::find($id);
+
+		return View::make('pages.application.update')
+			->with(array('application' => $application));
     }
 
-    public function deleteForm($id)
+    public function delete($id)
     {
-    	return 'Display the delete form';
-    }
+		// delete
+		$application = Application::find($id);
+		$application->delete();
+
+		return Redirect::route('applications')
+			->with('success', 'Successfully deleted application!');
+	}
+
+	public function deleteForm($id)
+	{
+		$application = Application::find($id);
+
+		return View::make('pages.application.delete')
+			->with(array('application' => $application));
+	}
+    
 }
