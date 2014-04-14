@@ -18,9 +18,7 @@ class AuthController extends BaseController
 		}
 
 		return View::make('pages.login')
-		    ->with(array(
-		    	'title' => 'Application Page'
-		    ));;
+		    ->with(array('title' => 'Login'));
 	}
 
 	public function destroy()

@@ -28,8 +28,8 @@ class CreateApplicationsTable extends Migration {
 			$table->string('application_url', 155);
 
 			// OAuth secret and Access token
-			$table->string('access_token', 40);
-			$table->string('secret_token', 155);
+			$table->string('access_token', 32);
+			$table->string('secret_token', 64);
 
 			# Timestamp controlling
 			$table->timestamps();
