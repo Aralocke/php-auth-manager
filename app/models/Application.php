@@ -2,12 +2,16 @@
 
 class Application extends Eloquent 
 {
-    /**
-     * Table name
-     */
+    protected static $userModel = 'Cartalyst\Sentry\Users\Eloquent\User';
+
     protected $table = 'applications';
 
     public $timestamps = true;
+
+    public function owner()
+    {
+        return $this->belongsTo(static::$userModel, 'uid', 'id');
+    }
 
     public static function random_id($length = 64)
     {

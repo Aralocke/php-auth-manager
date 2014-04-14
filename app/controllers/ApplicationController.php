@@ -26,7 +26,7 @@ class ApplicationController extends BaseController
 		// delete
 		$application = Application::findOrFail($id);
 		$name = $application->name;
-		
+
 		$application->delete();
 
 		return Redirect::route('applications.list')
@@ -140,7 +140,9 @@ class ApplicationController extends BaseController
 
     public function view($id)
     {
-    	$application = Application::findOrFail($id);
+    	$application = Application::with('owner')
+	    	->where('id', '=', $id)
+	    	->firstOrFail();
 
     	return View::make('pages.application.view')
 	    	->with(array('application' => $application));

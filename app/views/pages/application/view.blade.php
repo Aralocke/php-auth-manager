@@ -10,15 +10,16 @@
 <div class="sidebar-header">Management</div>
 <ul class="nav nav-sidebar nav-sub-sidebar">
 	<li><a href="{{ URL::route('applications.create') }}">New Application</a></li>
+	<li><a href="{{ URL::route('applications.view', $application->id) }}">Transfer Application</a></li>
 	<li><a href="{{ URL::route('applications.confirm', $application->id) }}">Delete Application</a></li>
 </ul><!-- ul.nav-sub-sidebar -->
 @stop
 
 @section('content.body')
 <div class="container-fluid">
-    <h2 class="sub-header">{{ $application->name }}</h2>
     <div class="row">
 		<div class="col-xs-12 col-md-10">
+			<h2 class="sub-header">{{ $application->name }}</h2>
 			{{ Form::model($application, array('route' => array('applications.update', $application->id), 'method' => 'PUT')) }}
 			<div class="row">
 				<div class="col-xs-12 col-md-6"><dl class="pull-left">
@@ -26,6 +27,8 @@
 					<dd>{{ $application->created_at }}</dd>
 					<dt>Last Updated</dt>
 					<dd>{{ $application->updated_at }}</dd>
+					<dt><a href="{{ URL::route('applications.transfer', $application->id) }}">Transfer Ownership</a></dt>
+					<dd>Owned by: <a href="{{ URL::route('users.view', $application->owner->id) }}">{{ $application->owner->email }}</a></dd>
 				</dl></div><!-- left column -->
 				<div class="col-xs-12 col-md-6"><dl class="pull-right">
 					<dt>Client ID</dt>

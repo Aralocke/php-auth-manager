@@ -32,6 +32,10 @@ Route::get('applications/{id}/view', array(
     'as' => 'applications.view',
     'uses' => 'ApplicationController@view'
 ));
+Route::get('applications/{id}/transfer', array(
+    'as' => 'applications.transfer',
+    'uses' => 'ApplicationController@view'
+));
 Route::get('applications/{id}/delete', array(
 	'as' => 'applications.confirm',
 	'uses' => 'ApplicationController@confirm'
@@ -62,6 +66,10 @@ Route::get('ldap/overview', array(
 /* User management */
 Route::get('users/overview', array(
 	'as' => 'users.list', 
+	'uses' => 'HomeController@index'
+));
+Route::get('users/{id}/view', array(
+	'as' => 'users.view', 
 	'uses' => 'HomeController@index'
 ));
 
