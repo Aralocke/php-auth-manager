@@ -34,7 +34,7 @@ Route::get('applications/{id}/view', array(
 ));
 Route::get('applications/{id}/transfer', array(
     'as' => 'applications.transfer',
-    'uses' => 'ApplicationController@view'
+    'uses' => 'ApplicationController@transfer'
 ));
 Route::get('applications/{id}/delete', array(
 	'as' => 'applications.confirm',

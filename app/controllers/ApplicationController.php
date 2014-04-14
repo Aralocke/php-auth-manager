@@ -1,7 +1,11 @@
 <?php
 
+use Cartalyst\Sentry\Users\Eloquent\User;
+use Cartalyst\Sentry\Users\UserNotFoundException;
+
 class ApplicationController extends BaseController 
 {
+
 	public function __construct()
 	{
 		$this->beforeFilter('auth');
@@ -40,7 +44,7 @@ class ApplicationController extends BaseController
 		    // Get the current active/logged in user
 		    $user = Sentry::getUser();
 		}
-		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+		catch (UserNotFoundException $e)
 		{
 			/* Something changed with the user, force a new login 
 			 * and refresh the session */
@@ -57,8 +61,58 @@ class ApplicationController extends BaseController
 		    ));;
 	}
 
+	public function transfer($id)
+	{
+		$application = Application::with('owner')
+	    	->where('id', '=', $id)
+	    	->firstOrFail();
+
+	    try
+		{
+		    $user = Sentry::getUser();
+		}
+		catch (UserNotFoundException $e)
+		{
+		    return Redirect::route('logout');
+		}
+
+	    $users = User::where('id', '!=', $user->id)->get();
+	    $list = array();
+
+	    foreach ($users as $user)
+	    {
+	    	$list[$user->id] = $user->email;
+	    }
+
+    	return View::make('pages.application.transfer')
+	    	->with(array(
+	    		'application' => $application,
+	    		'users'       => $list
+	    	));
+	}
+
 	public function update($id)
 	{
+		if (Input::has('owner_id'))
+		{
+			try 
+			{
+				$user = Sentry::findUserById(Input::get('owner_id'));
+			}
+			catch (UserNotFoundException $e)
+			{
+				return Redirect::route('applications.transfer', $id)
+					->with('error', 'User id does not exist or is not currently active');
+			}
+
+			$application = Application::findOrFail($id);
+			$application->uid = $user->id;
+			$application->save();
+
+			return Redirect::route('applications.list')
+				->with('success', 'Successfully transfered application to new owner');
+		}
+		
 		// validate
 		$rules = array(
 			'name'            => 'required|min:3|max:64',

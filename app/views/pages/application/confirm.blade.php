@@ -11,6 +11,7 @@
 <div class="sidebar-header">Management</div>
 <ul class="nav nav-sidebar nav-sub-sidebar">
 	<li><a href="{{ URL::route('applications.create') }}">New Application</a></li>
+	<li><a href="{{ URL::route('applications.transfer', $application->id) }}">Transfer Application</a></li>
 	<li><a href="{{ URL::route('applications.delete', $application->id) }}">Delete Application</a></li>
 </ul><!-- ul.nav-sub-sidebar -->
 @stop
