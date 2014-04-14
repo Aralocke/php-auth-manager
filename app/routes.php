@@ -1,5 +1,8 @@
 <?php
 
+/* Include the HTML macros file */
+require_once app_path().'/macros.php';
+
 // Home route
 Route::get('/', array(
 	'as'   => 'home',
@@ -22,34 +25,46 @@ Route::resource('auth', 'AuthController', array(
 
 // Application control
 Route::get('applications/overview', array(
-	'as'   => 'applications', /* Named route */
+	'as'   => 'applications.list', /* Named route */
 	'uses' => 'ApplicationController@index'
 ));
-
-/* Viewing an individual application data */
 Route::get('applications/{id}/view', array(
     'as' => 'applications.view',
     'uses' => 'ApplicationController@view'
 ));
-
-Route::get('applications/{id}/delete', 'ApplicationController@deleteForm');
+Route::get('applications/{id}/delete', array(
+	'as' => 'applications.confirm',
+	'uses' => 'ApplicationController@confirm'
+));
 Route::delete('applications/{id}/delete', array(
 	'as' => 'applications.delete',
 	'uses' => 'ApplicationController@delete'
 ));
-Route::get('applications/{id}/update', 'ApplicationController@updateForm');
 Route::put('applications/{id}/update', array(
 	'as' => 'applications.update',
 	'uses' => 'ApplicationController@update'
 ));
-
 Route::resource('applications', 'ApplicationController', array(
 	/* CRUD methods for the session controller */
-	'only' => array('create', 'store', 'destroy', 'update')
+	'only' => array('create', 'store')
 ));
 Route::get('applications', function()
 {
 	return Redirect::route('applications');
 });
-/* OAuth Integrations */
-// Route::post('');
+
+/* LDAP Controller routes */
+Route::get('ldap/overview', array(
+	'as' => 'ldap.list', 
+	'uses' => 'HomeController@index'
+));
+
+/* User management */
+Route::get('users/overview', array(
+	'as' => 'users.list', 
+	'uses' => 'HomeController@index'
+));
+
+/* Fake routes */
+Route::get('profile', array('as' => 'profile', 'uses' => 'HomeController@index'));
+Route::get('settings', array('as' => 'settings', 'uses' => 'HomeController@index'));

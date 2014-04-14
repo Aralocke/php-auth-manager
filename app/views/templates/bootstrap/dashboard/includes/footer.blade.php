@@ -1,3 +1,9 @@
+<!-- BEGIN: footer -->
+<div id="footer">
+@section('footer.content')
+	<!-- Empty footer content -->
+@show	
+</div><!-- div#footer -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
